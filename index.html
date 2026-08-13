@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a1224">
+<title>حكاية كريم ونوران ❤️</title>
+<style>
+:root {
+  --navy:#081426;
+  --navy2:#0d1f38;
+  --paper:#fff3db;
+  --ink:#241b21;
+  --pink:#e65b78;
+  --pink2:#ff8ba3;
+  --gold:#e9c17b;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#050912}
+body{
+  font-family:"Segoe UI",Tahoma,Arial,sans-serif;
+  color:#fff;display:grid;place-items:center;
+}
+.app{
+  width:100%;height:100dvh;max-width:430px;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(230,91,120,.20),transparent 25%),
+    radial-gradient(circle at 85% 86%,rgba(233,193,123,.11),transparent 27%),
+    linear-gradient(160deg,#102441 0%,#081426 54%,#050a12 100%);
+}
+.app::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.14;
+  background-image:radial-gradient(rgba(255,255,255,.85) .8px,transparent .8px);
+  background-size:28px 28px;
+}
+.topbar{
+  position:absolute;z-index:50;top:max(12px,env(safe-area-inset-top));
+  left:15px;right:15px;display:flex;direction:ltr;align-items:center;gap:10px
+}
+.progress{height:4px;flex:1;border-radius:99px;background:rgba(255,255,255,.11);overflow:hidden}
+.progress-fill{height:100%;width:10%;background:linear-gradient(90deg,var(--gold),var(--pink2),var(--pink));transition:.35s}
+.counter{font-size:11px;color:rgba(255,255,255,.62);min-width:42px}
+.deck{position:absolute;inset:42px 0 70px;perspective:1400px}
+.cover,.story-card{
+  position:absolute;inset:12px;border-radius:31px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 28px 80px rgba(0,0,0,.48);
+  opacity:0;pointer-events:none;transform-origin:left center;
+  transition:transform .58s cubic-bezier(.22,.75,.18,1),opacity .35s ease,filter .4s ease;
+}
+.cover.active,.story-card.active{opacity:1;pointer-events:auto;transform:translateX(0) rotateY(0) scale(1);z-index:10}
+.before{opacity:0!important;transform:translateX(-20%) rotateY(40deg) scale(.92)!important;filter:brightness(.62);z-index:2}
+.after{opacity:0!important;transform:translateX(14%) rotateY(-18deg) scale(.95)!important;z-index:1}
+
+.cover{
+ background:
+ radial-gradient(circle at 50% 15%,rgba(255,132,163,.18),transparent 26%),
+ linear-gradient(155deg,#183459,#0a1628 67%,#070c15);
+ display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;
+}
+.cover-inner{position:relative;z-index:2}
+.moon{font-size:68px;line-height:1;margin-bottom:12px;filter:drop-shadow(0 10px 30px rgba(233,193,123,.24))}
+.cover .mini{font-size:12px;letter-spacing:1.4px;color:var(--gold);margin-bottom:16px}
+.cover h1{margin:0;font-size:55px;line-height:1.18;font-weight:900}
+.cover h1 span{color:#ff89a2}
+.cover p{margin:20px 0 0;color:#d8c9d4;line-height:1.9;font-size:15px}
+.cover .start-pill{
+ margin:24px auto 0;width:max-content;padding:13px 22px;border-radius:999px;
+ background:linear-gradient(135deg,var(--pink),#ff7f9c);font-weight:800;
+ box-shadow:0 12px 28px rgba(230,91,120,.26)
+}
+.cover .line-heart{font-size:52px;color:#ff8ca5;margin-top:20px}
+
+.story-card{background:#111827}
+.paper{
+ position:absolute;z-index:4;left:18px;right:18px;top:18px;min-height:43%;
+ background:linear-gradient(145deg,#fff8e9,#f6e7cc);
+ color:var(--ink);padding:28px 22px 25px;text-align:center;
+ clip-path:polygon(2% 2%,18% 0,36% 2%,55% 0,74% 1%,98% 0,100% 12%,98% 34%,100% 55%,98% 77%,100% 98%,76% 99%,58% 97%,38% 100%,17% 98%,0 100%,2% 77%,0 56%,2% 32%,0 12%);
+ box-shadow:0 15px 35px rgba(0,0,0,.30)
+}
+.paper::before,.paper::after{
+ content:"";position:absolute;top:-7px;width:84px;height:23px;background:rgba(208,174,128,.58)
+}
+.paper::before{right:18px;transform:rotate(7deg)}
+.paper::after{left:18px;transform:rotate(-6deg)}
+.chapter{
+ display:inline-block;padding:6px 11px;border-radius:999px;background:#f1d8df;color:#8c5063;
+ font-size:11px;font-weight:800;margin-bottom:10px
+}
+.paper h2{margin:0;font-size:26px;line-height:1.5;color:#2b2027}
+.paper p{margin:11px 0 0;font-size:16px;line-height:2;font-weight:600;color:#4b3942}
+.scribble{position:absolute;bottom:8px;left:18px;font-family:Georgia,serif;font-size:40px;color:#b64867;transform:rotate(-12deg)}
+
+.art{position:absolute;left:0;right:0;bottom:0;height:63%;overflow:hidden}
+.art img{width:100%;height:100%;object-fit:cover;display:block}
+.art-shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,20,34,.04),rgba(7,11,20,.12) 55%,rgba(5,8,14,.48) 100%)}
+.page-no{
+ position:absolute;z-index:7;bottom:16px;right:16px;width:48px;height:48px;border-radius:50%;
+ display:grid;place-items:center;background:rgba(8,15,26,.82);border:1px solid rgba(233,193,123,.68);
+ color:#fff3dd;font-weight:800;font-size:13px;backdrop-filter:blur(8px)
+}
+
+.final-card .paper{min-height:39%}
+.final-card .paper h2{font-size:29px;color:#b83355}
+.final-card .paper p{font-size:18px}
+.final-card .art{height:66%}
+
+.hint{position:absolute;z-index:45;bottom:70px;left:0;right:0;text-align:center;color:rgba(255,255,255,.37);font-size:10px}
+.controls{
+ position:absolute;z-index:60;bottom:max(11px,env(safe-area-inset-bottom));left:13px;right:13px;
+ display:flex;gap:9px;direction:rtl
+}
+button{
+ border:0;border-radius:18px;min-height:50px;font-family:inherit;font-weight:850;font-size:14px;cursor:pointer;
+ -webkit-tap-highlight-color:transparent
+}
+.next{flex:1;background:linear-gradient(135deg,var(--pink),#ff7e9b);color:white;box-shadow:0 12px 30px rgba(230,91,120,.27)}
+.prev{width:58px;background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.11)}
+.prev:disabled{opacity:.28}
+
+@media(min-width:431px){
+ .app{height:min(920px,100dvh);border-radius:34px;box-shadow:0 35px 130px #000}
+}
+@media(max-height:720px){
+ .paper{min-height:45%;padding-top:20px}
+ .paper h2{font-size:23px}
+ .paper p{font-size:14px;line-height:1.85}
+}
+</style>
+</head>
+<body>
+<main class="app">
+  <div class="topbar">
+    <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="counter" id="counter">1 / 10</div>
+  </div>
+
+  <section class="deck" id="deck">
+    <article class="cover active">
+      <div class="cover-inner">
+        <div class="mini">A LITTLE LOVE STORY</div>
+        <div class="moon">☾</div>
+        <h1>حكاية<br><span>كريم ونوران</span></h1>
+        <p>مش كل الحكايات بتبدأ بموعد…<br>بعضها بيبدأ بحد غيّر شكل الأيام.</p>
+        <div class="start-pill">ابدئي الحكاية ♡</div>
+        <div class="line-heart">♡</div>
+      </div>
+    </article>
+
+    <article class="story-card" data-index="1">
+      <div class="paper"><span class="chapter">الفصل الأول</span><h2>قبل ما أعرفك</h2><p>أنا كنت متعود أعيش في هدوئي… ووحدتي.<br>يومي يعدّي، وأنا مقتنع إن مفيش حاجة ناقصة…<br>أو يمكن كنت بحاول أقنع نفسي بكده.</p><span class="scribble">♡</span></div>
+      <div class="art"><img src="assets/scene_01.svg" alt="كريم - قبل ما أعرفك"><div class="art-shade"></div></div><div class="page-no">01</div>
+    </article>
+    <article class="story-card" data-index="2"><div class="paper"><span class="chapter">الفصل الثاني</span><h2>لحد ما جيتي إنتي</h2><p>كنت عايش حياتي بشكل عادي جدًا… لحد ما جيتي إنتي.<br>وفجأة، التفاصيل اللي كانت عادية<br>بدأ يبقى ليها طعم تاني.</p><span class="scribble">♡</span></div><div class="art"><img src="assets/scene_02.svg" alt="كريم - لحد ما جيتي إنتي"><div class="art-shade"></div></div><div class="page-no">02</div></article>
+    <article class="story-card" data-index="3"><div class="paper"><span class="chapter">الفصل الثالث</span><h2>بقيت أفكر فيكي</h2><p>بقيت ألاقي نفسي بفكر فيكي… من غير ما أخطط.<br>في الشغل، في الطريق، وأنا ماسك الموبايل…<br>اسمك كان بييجي لوحده.</p><span class="scribble">♡</span></div><div class="art"><img src="assets/scene_03.svg" alt="كريم - بقيت أفكر فيكي"><div class="art-shade"></div></div><div class="page-no">03</div></article>
+    <article class="story-card" data-index="4"><div class="paper"><span class="chapter">الفصل الرابع</span><h2>تفاصيلك الصغيرة</h2><p>بقيت مستني كلامك… وضحكتك… وتفاصيلك الصغيرة.<br>حاجات بسيطة جدًا، بس كانت كفاية<br>تغيّر مود يوم كامل.</p><span class="scribble">♡</span></div><div class="art"><img src="assets/scene_04.svg" alt="كريم - تفاصيلك الصغيرة"><div class="art-shade"></div></div><div class="page-no">04</div></article>
+    <article class="story-card" data-index="5"><div class="paper"><span class="chapter">الفصل الخامس</span><h2>القطعة اللي كانت ناقصة</h2><p>وبدأت أفهم إن في ناس مش بيكملوا يومك…<br>هم بيكملوا قصتك.<br>وكل مرة كنت بكلمك، كنت بحس إن حتة ناقصة جوايا بتلاقي مكانها.</p><span class="scribble">♡</span></div><div class="art"><img src="assets/scene_06.svg" alt="كريم - القطعة اللي كانت ناقصة"><div class="art-shade"></div></div><div class="page-no">05</div></article>
+    <article class="story-card" data-index="6"><div class="paper"><span class="chapter">الفصل السادس</span><h2>باقي الحكاية</h2><p>نفسي أكون معاكي في الأيام الحلوة…<br>وحتى الأيام اللي مش حلوة.<br>مش مجرد لحظة لطيفة… أنا بتكلم عن بقية الحكاية.</p><span class="scribble">♡</span></div><div class="art"><img src="assets/scene_07.svg" alt="كريم - باقي الحكاية"><div class="art-shade"></div></div><div class="page-no">06</div></article>
+    <article class="story-card" data-index="7"><div class="paper"><span class="chapter">الفصل السابع</span><h2>الكلام اللي اتأخر</h2><p>وفي كلام فضلت مأجله…<br>عشان كنت عايز أقوله في الوقت الصح.<br>والنهارده أنا شايف إن الوقت الصح وصل.</p><span class="scribble">♡</span></div><div class="art"><img src="assets/scene_08.svg" alt="كريم - الكلام اللي اتأخر"><div class="art-shade"></div></div><div class="page-no">07</div></article>
+    <article class="story-card" data-index="8"><div class="paper"><span class="chapter">قبل الصفحة الأخيرة</span><h2>نوران…</h2><p>إنتي أجمل حاجة دخلت قصتي من غير استئذان.<br>وفي حقيقة واحدة عايز أقولها<br>من غير لف ولا دوران…</p><span class="scribble">♡</span></div><div class="art"><img src="assets/scene_03.svg" alt="كريم - نوران…"><div class="art-shade"></div></div><div class="page-no">08</div></article>
+    <article class="story-card final-card" data-index="9"><div class="paper"><span class="chapter">الصفحة الأخيرة</span><h2>أنا بحبك يا نوران ❤️</h2><p>ونفسي نكمّل باقي الحكاية سوا.<br><strong>— كريم</strong></p><span class="scribble">♡</span></div><div class="art"><img src="assets/scene_final.svg" alt="كريم - أنا بحبك يا نوران ❤️"><div class="art-shade"></div></div><div class="page-no">09</div></article>
+  </section>
+
+  <div class="hint">اسحبي يمين أو شمال</div>
+  <div class="controls"><button class="next" id="nextBtn">ابدئي الحكاية</button><button class="prev" id="prevBtn">→</button></div>
+</main>
+
+<script>
+const pages=[...document.querySelectorAll('.cover,.story-card')];
+const fill=document.getElementById('progressFill');
+const counter=document.getElementById('counter');
+const next=document.getElementById('nextBtn');
+const prev=document.getElementById('prevBtn');
+const deck=document.getElementById('deck');
+let index=0,startX=0,startY=0;
+function render(){pages.forEach((p,i)=>{p.classList.remove('active','before','after');if(i===index)p.classList.add('active');else if(i<index)p.classList.add('before');else p.classList.add('after');});fill.style.width=((index+1)/pages.length*100)+'%';counter.textContent=(index+1)+' / '+pages.length;prev.disabled=index===0;if(index===0) next.textContent='ابدئي الحكاية';else if(index===pages.length-2) next.textContent='الاعتراف ❤️';else if(index===pages.length-1) next.textContent='بحبك يا نوران ❤️';else next.textContent='كمّلي الحكاية';}
+function go(n){index=Math.max(0,Math.min(pages.length-1,n));render();}
+next.onclick=()=>{if(index<pages.length-1)go(index+1)};prev.onclick=()=>go(index-1);
+deck.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;},{passive:true});
+deck.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX,dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)) go(index+(dx<0?1:-1));},{passive:true});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(index+1);if(e.key==='ArrowRight')go(index-1)});
+render();
+</script>
+</body>
+</html>
